@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+        {{ p_title }}
+{% endblock %}
+{% block content %}
+    <a href="{% url 'addAuthor' %}" class="btn btn-primary">Add new author</a>
+    <a href="{% url 'addBook' %}" class="btn btn-primary">Add new Book</a>
+    <br><br>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>Title</th>
+            <th>Authors</th>
+            <th>Category</th>
+            <th>&nbsp;</th>
+        </tr>
+        {% for b in books %}
+        <tr>
+            <td>{{ b.title }}</td>
+            <td>{{ b.author.all|join:', ' }}</td>
+            <td>{{ b.category }}</td>
+            <td><a href="{% url 'editBook' pk=b.pk %}">{% bootstrap_icon 'edit' %}</a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

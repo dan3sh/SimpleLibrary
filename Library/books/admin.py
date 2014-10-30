@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+
+from django.contrib import admin
+from books.models import *
+
+# Register your models here.
+
+admin.site.register(Author)
+admin.site.register(Book)
+admin.site.register(Category)
